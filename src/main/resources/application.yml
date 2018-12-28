@@ -1,0 +1,31 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: admin
+      password: admin
+eureka:
+  client:
+    register-with-eureka: false # 是否注册自己的信息到eureka-server上, 默认是true
+    fetch-registry: false #是否拉取其它服务的信息, 默认是true
+    service-url: # eureka-server服务的地址,现在是自己的, 如果是集群, 还要加上其他集群的地址
+      defaultZone: http://127.0.0.1:${server.port}/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#management:
+#  endpoint:
+#    env:
+#      enabled: true # 启用端点 env
+#  endpoints:
+#    web:
+#      exposure:
+#        include:  # 暴露端点 env 配置多个,隔开
+
